@@ -110,6 +110,6 @@ const mostraRes = (operacao) => {
     }
 
     atualizaDisplay();
-    historico_div_text.innerText = "";
     numero_novo = true;
+    historico_div_text.innerText = "";
 }

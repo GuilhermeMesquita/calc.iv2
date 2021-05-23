@@ -42,7 +42,9 @@ body {
     width: 30%;
     min-height: 48vh;
     padding: 2em;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 10px 43px 72px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 43px 72px -10px rgba(0,0,0,0.75);
+    box-shadow: 10px 43px 72px -10px rgba(0,0,0,0.75);
     border-radius: 8px;
 }
 
