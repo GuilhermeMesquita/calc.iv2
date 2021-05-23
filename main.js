@@ -102,16 +102,20 @@ const mostraRes = (operacao) => {
         var full_operacao = operacao.innerText.split(" ").join("");
         let calculo_expressao = new Function('return ' + full_operacao)();
         let sucessor_virgula = calculo_expressao.toFixed(2).split(".")[1];
-        for (var i = 0; i < sucessor_virgula.length; i++) {
-            let valor_quebrado = sucessor_virgula.split("");
-            if (valor_quebrado[0] > 5) {
-                let prov = Number(calculo_expressao.toFixed(2).split(".")[0]) + 1;
-                var res = parseInt(prov);
-            } else {
-                prov = Number(calculo_expressao.toFixed(2).split(".")[0]);
-                res = parseInt(prov);
+        if (sucessor_virgula != undefined) {
+            for (var i = 0; i < sucessor_virgula.length; i++) {
+                let valor_quebrado = sucessor_virgula.split("");
+                if (valor_quebrado[0] > 5) {
+                    let prov = Number(calculo_expressao.toFixed(2).split(".")[0]) + 1;
+                    var res = parseInt(prov);
+                } else {
+                    prov = Number(calculo_expressao.toFixed(2).split(".")[0]);
+                    res = parseInt(prov);
+                }
+                valor_input = res;
             }
-            valor_input = res;
+        } else {
+            valor_input = "Division by zero"
         }
     } else {
         full_operacao = historico_div_text.innerText.replace(/.$/, '');
