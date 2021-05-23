@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc.iv2</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onload="aposCarregar()">
+    <div class="camposHidden">
+        <input type="hidden" name="historicoNumeros" id="historicoNumeros">
+    </div>
+    <main class="container">
+        <h2 class="title">Calc.iv2</h2>
+        <div id="hist" value=""></div>
+        <div class="input-field">0</div>
+        <div class="calc-body">
+            <div class="row" id="firstRow">
+                <div class="col">
+                    <button id="btnAC" type="button" class="btnClean">AC</button>
+                    <button id="btnC" type="button" class="btnClean">C</button>
+                    <button id="btnDivisao" type="button" class="btnOperadores">/</button>
+                </div>
+                <div class="col">
+                    <button id="btn7" type="button" class="btnNumbers">7</button>
+                    <button id="btn8" type="button" class="btnNumbers">8</button>
+                    <button id="btn9" type="button" class="btnNumbers">9</button>
+                    <button id="btnMultiplica" type="button" class="btnOperadores">*</button>
+                </div>
+            </div>
+            <div class="row" id="secondRow">
+                <div class="col">
+                    <button id="btn4" type="button" class="btnNumbers">4</button>
+                    <button id="btn5" type="button" class="btnNumbers">5</button>
+                    <button id="btn6" type="button" class="btnNumbers">6</button>
+                    <button id="btnSubtrai" type="button" class="btnOperadores">-</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="thirdRow">
+                    <button id="btn3" type="button" class="btnNumbers">3</button>
+                    <button id="btn2" type="button" class="btnNumbers">2</button>
+                    <button id="btn1" type="button" class="btnNumbers">1</button>
+                    <button id="btnSoma" type="button" class="btnOperadores">+</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="fourthRow">
+                    <button id="btn0" type="button" class="btnNumbers">0</button>
+                    <button id="btnTrocaSinal" type="button" class="btnNumbers">+/-</button>
+                    <button id="btnIgual" type="button" class="btnOperadores igual">=</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./main.js"></script>
+</body>
+
+</html>
