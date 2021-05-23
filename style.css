@@ -34,7 +34,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* position: absolute; */
 }
 
 .container{
@@ -78,7 +77,7 @@ button {
  cursor: pointer;   
 }
 
-.btnNumbers {
+.btnNumbers, .btnUnary {
     margin-bottom: 10px;
     outline: none;
     color: #000000;
@@ -89,7 +88,7 @@ button {
     border-radius: 50px;
 }
 
-.btnNumbers:hover{
+.btnNumbers:hover, .btnUnary:hover{
     background-color: #a1a1a1;
     transition: all 0.5s ease;
 }
@@ -143,7 +142,7 @@ button {
 
 
 
-
+/* Responsividade */
 @media (max-width: 975px){
 
     .container{
