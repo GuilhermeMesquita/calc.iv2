@@ -1,8 +1,6 @@
 // Variáveis globais
-var valor_input = "0"
+var valor_input = "0";
 var numero_novo = true;
-var finalVal;
-var controle = false;
 var historico_div_text = document.getElementById("hist");
 
 // Eventos para o clique de cada botão
@@ -30,10 +28,11 @@ const aposCarregar = () => {
 // Função responsável por atualizar o input principal da calculadora.
 const atualizaDisplay = () => {
     $(".input-field").text(valor_input);
-    if ($(".input-field").text().length > 8) {
+    if ($(".input-field").text().length > 8 && typeof (valor_input) == "number") {
         alert("Máximo de caracteres excedido.");
         $(".input-field").text("Error");
         $(".input-field").val("error");
+        numero_novo = "true";
     }
 }
 
@@ -53,10 +52,11 @@ const sinal = (operador) => {
 
 // Responsável por montar o histórico da calculadora
 function calculo(symbol) {
-    numero_novo = true;
-    $(".input-field").text("0");
-    historico_div_text.innerText += `${valor_input + " " + symbol}`;
+    historico_div_text.innerText += `${$(".input-field").text() + " " + symbol}`;
     historico_div_text.innerText.replace("undefined", "0");
+
+    $(".input-field").text("0");
+    numero_novo = true;
 }
 
 // Função responsável por inverter o sinal do input field.
@@ -73,6 +73,7 @@ const botao = (elem) => {
     } else {
         valor_input += elem;
     }
+    numero_novo = "true";
     atualizaDisplay();
 }
 
@@ -85,30 +86,37 @@ const limpaHistorico = () => {
 }
 // Função ref. ao botão Clear.
 const limpaUltimoInserido = () => {
-    let historico_completo = historico_div_text.innerText.split(" ").join("");
-    let provisorio = historico_completo.substring(0, historico_completo.length - 3);
-    historico_div_text.innerText = provisorio;
+    let historico_completo = historico_div_text.innerText.split(" ");
+    let ultimo_elem = historico_completo[historico_completo.length - 1] + "a";
+    let ultimo_elem_numeral = historico_completo[historico_completo.length - 2];
+
+    historico_div_text.innerText = historico_div_text.innerText.replace(ultimo_elem, "");
+    historico_div_text.innerText = historico_div_text.innerText.replace(ultimo_elem_numeral, "");
     valor_input = "0";
 }
 
 // Função para mostrar o resultado, recebe como parâmetro o histórico, sendo que é retornado o calculo da expressão inteira.
 const mostraRes = (operacao) => {
-    historico_div_text.innerText += valor_input
-    let full_operacao = operacao.innerText.split(" ").join("");
-    let calculo_expressao = new Function('return ' + full_operacao)();
-    let sucessor_virgula = calculo_expressao.toFixed(2).split(".")[1];
-    for (var i = 0; i < sucessor_virgula.length; i++) {
-        let valor_quebrado = sucessor_virgula.split("");
-        if (valor_quebrado[0] > 5) {
-            let prov = Number(calculo_expressao.toFixed(2).split(".")[0]) + 1;
-            var res = parseInt(prov);
-        } else {
-            prov = Number(calculo_expressao.toFixed(2).split(".")[0]);
-            res = parseInt(prov);
+    if ($(".input-field").text() != "0") {
+        historico_div_text.innerText += $(".input-field").text();
+        var full_operacao = operacao.innerText.split(" ").join("");
+        let calculo_expressao = new Function('return ' + full_operacao)();
+        let sucessor_virgula = calculo_expressao.toFixed(2).split(".")[1];
+        for (var i = 0; i < sucessor_virgula.length; i++) {
+            let valor_quebrado = sucessor_virgula.split("");
+            if (valor_quebrado[0] > 5) {
+                let prov = Number(calculo_expressao.toFixed(2).split(".")[0]) + 1;
+                var res = parseInt(prov);
+            } else {
+                prov = Number(calculo_expressao.toFixed(2).split(".")[0]);
+                res = parseInt(prov);
+            }
+            valor_input = res;
         }
-        valor_input = res;
+    } else {
+        full_operacao = historico_div_text.innerText.replace(/.$/, '');
+        valor_input = "Syntax Error";
     }
-
     atualizaDisplay();
     numero_novo = true;
     historico_div_text.innerText = "";
