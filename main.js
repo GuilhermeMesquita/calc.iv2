@@ -6,7 +6,7 @@ var historico_div_text = document.getElementById("hist");
 // Eventos para o clique de cada botão
 const aposCarregar = () => {
     $("#btnAC").on("click", function () {
-        limpaHistorico();
+        limpaGeral();
     });
     $("#btnC").on("click", function () {
         limpaUltimoInserido();
@@ -78,7 +78,7 @@ const botao = (elem) => {
 }
 
 // Função ref. ao botão All Clear.
-const limpaHistorico = () => {
+const limpaGeral = () => {
     numero_novo = true;
     valor_input = '0';
     historico_div_text.innerText = "";
