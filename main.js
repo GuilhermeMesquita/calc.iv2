@@ -53,9 +53,9 @@ const sinal = (operador) => {
 // Responsável por montar o histórico da calculadora
 function calculo(symbol) {
     historico_div_text.innerText += `${$(".input-field").text() + " " + symbol}`;
-    historico_div_text.innerText.replace("undefined", "0");
+    historico_div_text.innerText.replace("undefined", "");
 
-    $(".input-field").text("0");
+    $(".input-field").text("");
     numero_novo = true;
 }
 
@@ -92,12 +92,12 @@ const limpaUltimoInserido = () => {
 
     historico_div_text.innerText = historico_div_text.innerText.replace(ultimo_elem, "");
     historico_div_text.innerText = historico_div_text.innerText.replace(ultimo_elem_numeral, "");
-    valor_input = "0";
+    valor_input = "";
 }
 
 // Função para mostrar o resultado, recebe como parâmetro o histórico, sendo que é retornado o calculo da expressão inteira.
 const mostraRes = (operacao) => {
-    if ($(".input-field").text() != "0") {
+    if ($(".input-field").text() != "") {
         historico_div_text.innerText += $(".input-field").text();
         var full_operacao = operacao.innerText.split(" ").join("");
         let calculo_expressao = new Function('return ' + full_operacao)();
