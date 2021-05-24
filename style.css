@@ -150,10 +150,15 @@ button {
     .container{
         width: 25em;
     }
-    .btnNumbers, .btnUnary{
+    .btnNumbers{
         font-size:32px;
         width: 50px;
         padding: 1% 1% 1% 1%;
+    }
+    .btnUnary{
+        font-size:32px;
+        width: 50px;
+        padding: 1% 1% 1% 1%; 
     }
     .btnClean{
         font-size: 32px;
