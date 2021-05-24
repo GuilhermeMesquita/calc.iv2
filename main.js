@@ -28,10 +28,10 @@ const aposCarregar = () => {
 // Função responsável por atualizar o input principal da calculadora.
 const atualizaDisplay = () => {
     $(".input-field").text(valor_input);
-    if ($(".input-field").text().length > 8 && typeof (valor_input) == "number") {
+    if ($(".input-field").text().length > 8 && $(".input-field").val() != "error") {
         alert("Máximo de caracteres excedido.");
         $(".input-field").text("Error");
-        $(".input-field").val("error");
+        valor_input = "";
         numero_novo = "true";
     }
 }
@@ -52,7 +52,8 @@ const sinal = (operador) => {
 
 // Responsável por montar o histórico da calculadora
 function calculo(symbol) {
-    historico_div_text.innerText += `${$(".input-field").text() + " " + symbol}`;
+    if ($(".input-field").text() == "") $(".input-field").text("0");
+    historico_div_text.innerText += $(".input-field").text() + " " + symbol;
     historico_div_text.innerText.replace("undefined", "");
 
     $(".input-field").text("");
@@ -67,6 +68,7 @@ const trocaSinal = () => {
 
 // Função referente aos números da calculadora.
 const botao = (elem) => {
+    $(".input-field").val("");
     if (numero_novo == true) {
         valor_input = '' + elem;
         numero_novo = false;
@@ -80,6 +82,7 @@ const botao = (elem) => {
 // Função ref. ao botão All Clear.
 const limpaGeral = () => {
     numero_novo = true;
+    $(".input-field").val("");
     valor_input = '0';
     historico_div_text.innerText = "";
     atualizaDisplay();
@@ -115,13 +118,16 @@ const mostraRes = (operacao) => {
                 valor_input = res;
             }
         } else {
-            valor_input = "Division by zero"
+            valor_input = "Division by zero";
+            $(".input-field").val("error");
         }
     } else {
         full_operacao = historico_div_text.innerText.replace(/.$/, '');
         valor_input = "Syntax Error";
+        $(".input-field").val("error");
     }
     atualizaDisplay();
     numero_novo = true;
+    $(".input-field").val("");
     historico_div_text.innerText = "";
 }
