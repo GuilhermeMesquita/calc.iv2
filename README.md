@@ -16,5 +16,5 @@ Calc.iv2
 <li>jQuery</li>
 </ul>
 <br>
-<p>"Playground" <a href="https://guilhermemesquita.github.io/calc.iv2/">aqui</a>.</p>
+<p align="center">"Playground" <a href="https://guilhermemesquita.github.io/calc.iv2/">aqui</a>.</p>
 <p align="center">Enjoy it! 👽</p>
